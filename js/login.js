@@ -29,3 +29,35 @@ function onLogin(){
         document.getElementById("loginResult").innerHTML = err.message;
     }
 }
+function onSignup(){
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let username = document.getElementById("signupName").value;
+    let password = document.getElementById("signupPassword").value;
+    let hash = md5(password);
+
+    let json = {firstName:firstName,lastName:lastName,username:username,password:hash};
+    let jsonPayload = JSON.stringify(json);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST",loginUrl);
+    xhr.setRequestHeader("Content-type", "application/json;","charset=UTF-8");
+
+    try {
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                let jsonObject = JSON.parse(xhr.responseText);
+                let isSuccess = jsonObject.isSuccess;
+                if(!isSuccess){
+                    document.getElementById("signupResult").innerHTML = "Failed to signup";
+                }
+                window.location.href = "contact.html";
+            }
+        }
+        xhr.send(jsonPayload);
+    }
+    catch(err){
+        document.getElementById("signupResult").innerHTML = err.message;
+    }
+
+}
