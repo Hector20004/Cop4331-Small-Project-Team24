@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Contacts</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h2 id="welcomeText">Welcome</h2>
+    <button onclick="logout()">Logout</button>
+  </header>
+
+  <hr />
+
+  <section>
+    <input type="text" id="searchText" placeholder="Search contacts" />
+    <button onclick="searchContacts()">Search</button>
+  </section>
+
+  <br />
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>First</th>
+        <th>Last</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="contactsTable"></tbody>
+  </table>
+
+  <br />
+
+  <h3>Add Contact</h3>
+  <input id="firstName" placeholder="First Name" />
+  <input id="lastName" placeholder="Last Name" />
+  <input id="phone" placeholder="Phone" />
+  <input id="email" placeholder="Email" />
+  <button onclick="addContact()">Add</button>
+
+  <script src="js/contacts.js"></script>
+</body>
+</html>
