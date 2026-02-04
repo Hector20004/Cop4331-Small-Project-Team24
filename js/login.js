@@ -50,7 +50,7 @@ function onSignup(){
         xhr.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 200){
                 let jsonObject = JSON.parse(xhr.responseText);
-                let isSuccess = jsonObject.isSuccess;
+                let isSuccess = (jsonObject.error === "");
                 if(!isSuccess){
                     document.getElementById("signupResult").innerHTML = "Failed to signup";
                 }
