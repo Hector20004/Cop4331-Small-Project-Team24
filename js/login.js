@@ -53,7 +53,7 @@ function onSignup(){
                 console.log(jsonObject);
                 let isSuccess = (jsonObject.error === "");
                 if(!isSuccess){
-                    document.getElementById("signupResult").innerHTML = "Failed to signup";
+                    document.getElementById("signupResult").innerHTML = jsonObject.error;
                 }
                 else{
                     window.location.href = "contact.html";
