@@ -62,9 +62,8 @@ function onSignup(){
                     document.getElementById("signupResult").innerHTML = jsonObject.error;
                     return;
                 }
-                localStorage.setItem("firstName",jsonObject.firstName);
-                localStorage.setItem("lastName",jsonObject.lastName);
-                localStorage.setItem("userId",userId);
+                localStorage.setItem("firstName",firstName);
+                localStorage.setItem("lastName",lastName);
                 window.location.href = "contact.html";
             }
         }
