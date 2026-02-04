@@ -20,8 +20,9 @@ function onLogin(){
                 if(userId < 1){
                     document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
                 }
-
-                window.location.href = "contact.html";
+                else{
+                    window.location.href = "contact.html";
+                }
             }
         };
         xhr.send(jsonPayload);
