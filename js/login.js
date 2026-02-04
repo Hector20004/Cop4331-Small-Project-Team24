@@ -42,7 +42,7 @@ function onSignup(){
     let jsonPayload = JSON.stringify(json);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST",registerUrl);
+    xhr.open("POST",signupUrl);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
     try {
