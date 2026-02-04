@@ -53,7 +53,9 @@ function onSignup(){
                 if(!isSuccess){
                     document.getElementById("signupResult").innerHTML = "Failed to signup";
                 }
-                window.location.href = "contact.html";
+                else{
+                    window.location.href = "contact.html";
+                }
             }
         }
         xhr.send(jsonPayload);
