@@ -1,6 +1,9 @@
 const loginUrl = window.location.origin + "/Login.php";
 const signupUrl = window.location.origin + "/Register.php";
 
+let userId = 0;
+let firstName = "";
+let lastName = "";
 
 function onLogin(){
     let login = document.getElementById("loginName").value;
@@ -19,10 +22,13 @@ function onLogin(){
                 userId = jsonObject.id;
                 if(userId < 1){
                     document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
+                    return;
                 }
-                else{
-                    window.location.href = "contact.html";
-                }
+                firstName = jsonObject.firstName;
+                lastName = jsonObject.lastName;
+                saveCookie();
+                window.location.href = "contact.html";
+                
             }
         };
         xhr.send(jsonPayload);
