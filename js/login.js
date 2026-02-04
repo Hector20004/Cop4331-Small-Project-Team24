@@ -1,4 +1,5 @@
-const loginUrl = "https://24.projectucf.software/Login.php";
+const loginUrl = window.location.origin + "/Login.php";
+const signupUrl = window.location.origin + "/Register.php";
 
 
 function onLogin(){
@@ -8,8 +9,8 @@ function onLogin(){
     let payload = {login:login,password:hash};
     let jsonPayload = JSON.stringify(payload);
     let xhr = new XMLHttpRequest();
-    xhr.open("POST",loginUrl);
-    xhr.setRequestHeader("Content-type", "application/json;","charset=UTF-8");
+    xhr.open("POST",loginUrl,true);
+    xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 
     try {
         xhr.onreadystatechange = function(){
@@ -26,6 +27,7 @@ function onLogin(){
         xhr.send(jsonPayload);
     }
     catch(err){
+        console.log(err.message);
         document.getElementById("loginResult").innerHTML = err.message;
     }
 }
@@ -40,8 +42,8 @@ function onSignup(){
     let jsonPayload = JSON.stringify(json);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST",loginUrl);
-    xhr.setRequestHeader("Content-type", "application/json;","charset=UTF-8");
+    xhr.open("POST",registerUrl);
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
     try {
         xhr.onreadystatechange = function(){
