@@ -56,6 +56,7 @@ function onSignup(){
                     document.getElementById("signupResult").innerHTML = jsonObject.error;
                 }
                 else{
+                    saveCookie();
                     window.location.href = "contact.html";
                 }
             }
