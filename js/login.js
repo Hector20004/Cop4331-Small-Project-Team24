@@ -24,9 +24,9 @@ function onLogin(){
                     document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
                     return;
                 }
-                firstName = jsonObject.firstName;
-                lastName = jsonObject.lastName;
-                saveCookie();
+                localStorage.setItem("firstName",jsonObject.firstName);
+                localStorage.setItem("lastName",jsonObject.lastName);
+                localStorage.setItem("userId",userId);
                 window.location.href = "contact.html";
                 
             }
