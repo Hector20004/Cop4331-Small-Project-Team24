@@ -39,7 +39,7 @@ function onSignup(){
     let password = document.getElementById("signupPassword").value;
     let hash = md5(password);
 
-    let json = {FirstName:firstName,LastName:lastName,Login:username,Password:hash};
+    let json = {firstName:firstName,lastName:lastName,login:username,password:hash};
     let jsonPayload = JSON.stringify(json);
 
     let xhr = new XMLHttpRequest();
