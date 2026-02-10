@@ -8,42 +8,49 @@
 </head>
 <body>
 
-  <header>
-    <h2 id="welcomeText">Welcome</h2>
-    <button onclick="logout()">Logout</button>
-  </header>
+  <h1 class="page-title">Contact Manager</h1>
 
-  <hr />
+  <div class="card">
 
-  <section>
-    <input type="text" id="searchText" placeholder="Search contacts" />
-    <button onclick="searchContacts()">Search</button>
-  </section>
+    <div class="topbar">
+      <h2 id="welcomeText">Welcome</h2>
+      <button onclick="logout()">Log Out</button>
+    </div>
 
-  <br />
+    <!-- SEARCH -->
+    <div style="margin-bottom: 25px;">
+      <input id="searchText" placeholder="Search contacts" />
+      <button onclick="searchContacts()">Search</button>
+    </div>
 
-  <table border="1">
-    <thead>
-      <tr>
-        <th>First</th>
-        <th>Last</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody id="contactsTable"></tbody>
-  </table>
+    <!-- TABLE -->
+    <table>
+      <thead>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="contactsTable"></tbody>
+    </table>
 
-  <br />
+    <hr style="margin: 35px 0;">
 
-  <h3>Add Contact</h3>
-  <input id="firstName" placeholder="First Name" />
-  <input id="lastName" placeholder="Last Name" />
-  <input id="phone" placeholder="Phone" />
-  <input id="email" placeholder="Email" />
-  <button onclick="addContact()">Add</button>
+    <!-- ADD CONTACT -->
+    <h3>Add Contact</h3>
+    <input id="firstName" placeholder="First Name" />
+    <input id="lastName" placeholder="Last Name" />
+    <input id="phone" placeholder="Phone" />
+    <input id="email" placeholder="Email" />
+    <button onclick="addContact()">Add</button>
 
+  </div>
+
+  <link rel="stylesheet" href="styles/contact.css">
   <script src="js/contacts.js"></script>
+
 </body>
 </html>
