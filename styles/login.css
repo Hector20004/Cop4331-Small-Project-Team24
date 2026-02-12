@@ -1,11 +1,178 @@
-/* Reset some default browser styles */
-* {
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+body.cyber-login {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg, #050510, #0a0f2a, #120018);
+    font-family: "Rajdhani", sans-serif;
+    overflow: hidden;
+}
+.login-panel {
+    position: relative;
+    width: 420px;
+    padding: 40px;
+
+    background: rgba(0, 0, 0, 0.75);
+    border: 2px solid #00fff2;
+
+    box-shadow:
+        0 0 10px #00fff2,
+        0 0 40px rgba(0,255,255,0.4);
+
+    backdrop-filter: blur(8px);
+}
+.glitch-title {
+    font-size: 32px;
+    color: #fcee0a;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
 }
 
-/* Page background */
+.glitch-title::before,
+.glitch-title::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.glitch-title::before {
+    color: #ff00c8;
+    animation: glitchTop 1.5s infinite linear alternate-reverse;
+}
+
+.glitch-title::after {
+    color: #00fff2;
+    animation: glitchBottom 1.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+    0% { clip-path: inset(0 0 80% 0); transform: translate(-2px,-2px); }
+    50% { clip-path: inset(0 0 50% 0); transform: translate(2px,2px); }
+    100% { clip-path: inset(0 0 80% 0); transform: translate(-1px,1px); }
+}
+
+@keyframes glitchBottom {
+    0% { clip-path: inset(80% 0 0 0); transform: translate(2px,2px); }
+    50% { clip-path: inset(50% 0 0 0); transform: translate(-2px,-2px); }
+    100% { clip-path: inset(80% 0 0 0); transform: translate(1px,-1px); }
+}
+.sub-text {
+    color: #00fff2;
+    font-size: 14px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #ff00c8;
+
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 1px;
+
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-bottom: 2px solid #00fff2;
+    box-shadow: 0 5px 15px rgba(0,255,255,0.4);
+}
+button {
+    width: 100%;
+    padding: 14px;
+
+    background: transparent;
+    border: 2px solid #fcee0a;
+
+    color: #fcee0a;
+    font-size: 16px;
+    letter-spacing: 2px;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #fcee0a;
+    color: #000;
+
+    box-shadow:
+        0 0 10px #fcee0a,
+        0 0 30px #fcee0a,
+        0 0 60px #fcee0a;
+}
+#loginResult {
+    display: block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ff0055;
+}
+.panel-corners::before,
+.panel-corners::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00fff2;
+}
+
+.panel-corners::before {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.panel-corners::after {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
+}
+
+.cyber-btn.yellow {
+    color: #fcee0a;
+    border-color: #fcee0a;
+}
+
+.cyber-btn.yellow:hover {
+    background: #fcee0a;
+    color: #000;
+    box-shadow:
+        0 0 10px #fcee0a,
+        0 0 30px #fcee0a,
+        0 0 60px #fcee0a;
+}
+.cyber-btn.cyan {
+    color: #00fff2;
+    border-color: #00fff2;
+}
+
+.cyber-btn.cyan:hover {
+    background: #00fff2;
+    color: #000;
+    box-shadow:
+        0 0 10px #00fff2,
+        0 0 30px #00fff2,
+        0 0 60px #00fff2;
+}
+/* Reset some default browser styles */
 body {
+    font-family: "Rajdhani",sans-serif;
+    font-weight: 700;
+    font-style: normal;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -13,71 +180,145 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font: "radj"
+ }
+.enterpage {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #050510, #0a0f2a, #120018);
+    overflow: hidden;
+    position: relative;
+    font-family: "Rajdhani", sans-serif;
+}
+.enterpage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            to right,
+            rgba(0,255,255,0.08) 0px,
+            rgba(0,255,255,0.08) 1px,
+            transparent 1px,
+            transparent 80px
+        ),
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,0,200,0.08) 0px,
+            rgba(255,0,200,0.08) 1px,
+            transparent 1px,
+            transparent 80px
+        );
+
+    animation: gridMove 20s linear infinite;
+    pointer-events: none;
 }
 
-/* Shared container styles for login & signup */
-#loginDiv,
-#signupDiv {
-    background-color: #ffffff;
-    padding: 30px;
-    width: 300px;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+@keyframes gridMove {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 80px 80px, 80px 80px; }
+}
+.enterpage::after {
+    content: "";
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(255,0,200,0.4), transparent 70%);
+    top: -200px;
+    left: -200px;
+    filter: blur(150px);
+    animation: glowMove 12s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes glowMove {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+    to {
+        transform: translate(300px, 200px) scale(1.4);
+    }
+}
+.enterpage::after,
+.enterpage::before {
+    mix-blend-mode: screen;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+
+    pointer-events: none;
+}
+.enterpage {
+    animation: flicker 4s infinite alternate;
+}
+
+@keyframes flicker {
+    0%   { filter: brightness(1); }
+    5%   { filter: brightness(1.2); }
+    10%  { filter: brightness(0.9); }
+    15%  { filter: brightness(1.1); }
+    100% { filter: brightness(1); }
+}
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    box-shadow:
+        inset 0 0 200px rgba(255,0,200,0.2),
+        inset 0 0 300px rgba(0,255,255,0.2);
+    pointer-events: none;
+}
+
+.cyber-box {
+    width: 250px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    color: #00fff2; /* neon cyan text */
+
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00fff2;
+
+    box-shadow: 0 0 5px #00fff2;
+    transition: all 0.3s ease-in-out;
+}
+.menu-panel {
+    width: 500px;
     text-align: center;
 }
-
-/* Title text */
-#inner-title {
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+.cyber-btn {
     display: block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* Inputs */
-input[type="text"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-/* Buttons */
-.buttons {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.buttons:hover {
-    background-color: #0056b3;
-}
-
-/* Result / message text */
-#loginResult,
-#signupResult {
-    display: block;
-    margin-top: 10px;
-    font-size: 13px;
-    color: #d9534f; /* red for errors by default */
-}
-
-/* Simple link styling (for the page with Login / Signup links) */
-a {
-    margin: 0 10px;
+    padding: 16px;
     text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-}
-
-a:hover {
-    text-decoration: underline;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border: 2px solid;
+    background: transparent;
+    transition: all 0.3s ease;
 }

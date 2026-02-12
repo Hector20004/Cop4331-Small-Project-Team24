@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script src="js/login.js" defer></script> 
+    <script src="js/login.js" defer></script>
     <script type="text/javascript" src="js/md5.js"></script>
     <link rel="stylesheet" href="styles/login.css">
     <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div id="signupDiv">
-        <span id="inner-title">PLEASE Sign up</span>
-        <input type="text" id="firstName" placeholder="First Name"/><br />
-        <input type="text" id="lastName" placeholder="Last Name"/><br />
-        <input type="text" id="signupName" placeholder="Username" /><br />
-        <input type="password" id="signupPassword" placeholder="Password"/><br />
-        <button type="button" id="signupButton" class="buttons" onclick="onSignup();"> SIGN UP </button>
+<body class="cyber-login">
+    <div class="login-panel">
+        <div class="panel-corners"></div>
+        <h1 class="glitch-title" data-text="IDENTITY REGISTRY">
+            IDENTITY REGISTRY
+        </h1>
+        <p class="sub-text">CREATE NEW NEURAL PROFILE</p>
+        <input type="text" id="firstName" placeholder="GIVEN NAME" />
+        <input type="text" id="lastName" placeholder="SURNAME" />
+        <input type="text" id="signupName" placeholder="USER ID" />
+        <input type="password" id="signupPassword" placeholder="ACCESS KEY" />
+        <button type="button" id="signupButton" onclick="onSignup();">
+            REGISTER PROFILE
+        </button>
         <span id="signupResult"></span>
     </div>
 </body>
