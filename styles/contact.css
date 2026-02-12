@@ -80,24 +80,30 @@ button:hover {
 
 /* Inputs */
 input {
-  width: 100%;
-  max-width: 300px;
-  padding: 12px 16px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border-radius: 999px;
-  border: 2px solid #00fff2;
-  background: transparent;
-  color: #00fff2;
-  font-size: 16px;
-  outline: none;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 5px rgba(0,255,255,0.7);
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 999px;
+    border: 2px solid #00fff2; /* cyan border */
+    background: transparent;
+    color: #00fff2; /* neon cyan text */
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(0,255,255,0.7);
 }
 
+/* Placeholder text */
 input::placeholder {
-  color: rgba(255,0,200,0.6);
-  letter-spacing: 1.5px;
+    color: rgba(0,255,255,0.5); /* soft neon cyan */
+    letter-spacing: 1.5px;
+    font-style: italic;
+}
+
+input:focus::placeholder {
+    color: rgba(252,238,10,0.5); /* yellow glow on focus */
 }
 
 input:focus {
