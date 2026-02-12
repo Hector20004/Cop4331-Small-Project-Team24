@@ -7,23 +7,23 @@
   <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
+<header class="page-title">
+    <h1>NEURAL CONTACT CONSOLE</h1>
+    <button onclick="logout()">DEAUTHENTICATE</button>
+</header>
 
-  <h1 class="page-title">NEURAL CONTACT CONSOLE</h1>
-
+  <div class="card-container">
   <div class="card">
-
-    <!-- Top Bar -->
-    <div class="topbar">
-      <h2 id="welcomeText">WELCOME, OPERATOR</h2>
-      <button onclick="logout()">TERMINATE SESSION</button>
-    </div>
+      <header>
+          <h1>CONTACT LIST</h1>
+      </header>
 
     <!-- SEARCH -->
-    <div style="margin-bottom: 25px;">
+    <div class="searchbar" style="margin-bottom: 10px">
       <input id="searchText" placeholder="SCAN CONTACTS..." />
       <button onclick="searchContacts()">INITIATE SCAN</button>
     </div>
-
+      <div class="contacts-scrollable">
     <!-- TABLE -->
     <table>
       <thead>
@@ -37,17 +37,22 @@
       </thead>
       <tbody id="contactsTable"></tbody>
     </table>
-
-    <hr style="margin: 35px 0;">
-
-    <!-- ADD CONTACT -->
-    <h3>REGISTER NEW CONTACT</h3>
-    <input id="firstName" placeholder="GIVEN NAME" />
-    <input id="lastName" placeholder="SURNAME" />
-    <input id="phone" placeholder="CALLSIGN / PHONE" />
-    <input id="email" placeholder="EMAIL PROTOCOL" />
-    <button onclick="addContact()">ADD TO NETWORK</button>
-
+      </div>
+  </div>
+      <div class="card register">
+          <header>
+              <h1>REGISTER NEW CONTACT</h1>
+          </header>
+          <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+              <div>
+          <input id="firstName" placeholder="GIVEN NAME" />
+          <input id="lastName" placeholder="SURNAME" />
+          <input id="phone" placeholder="CALLSIGN / PHONE" />
+          <input id="email" placeholder="EMAIL PROTOCOL" />
+              </div>
+          </div>
+          <button onclick="addContact()" style="width: 100%">ADD TO NETWORK</button>
+      </div>
   </div>
 
   <script src="js/contacts.js"></script>

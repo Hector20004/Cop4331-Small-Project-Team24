@@ -12,7 +12,7 @@ function logout() {
 window.onload = function () {
   const userId = getUserId();
   if (!userId) {
-    window.location.href = "login.html";
+    //window.location.href = "login.html";
     return;
   }
 
