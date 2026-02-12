@@ -6,32 +6,6 @@ function logout() {
   window.location.href = "login.html";
 }
 
-function renderContacts(contacts) {
-  const table = document.getElementById("contactsTable");
-  table.innerHTML = "";
-
-  contacts.forEach(c => {
-    const row = document.createElement("tr");
-
-    row.onclick = () => {
-        populateEditor(c);
-    }
-
-    row.innerHTML = `
-      <td>${c.firstName}</td>
-      <td>${c.lastName}</td>
-      <td>${c.phone}</td>
-      <td>${c.email}</td>
-    `;
-
-    table.appendChild(row);
-  });
-}
-
-function searchContacts() {
-    apiSearchContacts(renderContacts);
-}
-
 function setEditorDisabled(state) {
     document.getElementById("firstName").disabled = state;
     document.getElementById("lastName").disabled = state;
@@ -65,6 +39,33 @@ function readEditor() {
         email: document.getElementById("email").value,
         id: current_id
     }
+}
+
+function renderContacts(contacts) {
+    const table = document.getElementById("contactsTable");
+    table.innerHTML = "";
+
+    contacts.forEach(c => {
+        const row = document.createElement("tr");
+
+        row.onclick = () => {
+            populateEditor(c);
+            setEditorDisabled(false)
+        }
+
+        row.innerHTML = `
+      <td>${c.firstName}</td>
+      <td>${c.lastName}</td>
+      <td>${c.phone}</td>
+      <td>${c.email}</td>
+    `;
+
+        table.appendChild(row);
+    });
+}
+
+function searchContacts() {
+    apiSearchContacts(renderContacts);
 }
 
 function addContact() {
