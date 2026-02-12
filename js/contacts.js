@@ -6,19 +6,6 @@ function logout() {
   window.location.href = "login.html";
 }
 
-window.onload = function () {
-  const userId = getUserId();
-  if (!userId) {
-    window.location.href = "login.html";
-    return;
-  }
-
-  const firstName = localStorage.getItem("firstName");
-  const lastName = localStorage.getItem("lastName");
-  document.getElementById("welcomeText").innerText =
-    "Welcome " + firstName + " " + lastName;
-};
-
 function renderContacts(contacts) {
   const table = document.getElementById("contactsTable");
   table.innerHTML = "";
@@ -39,6 +26,10 @@ function renderContacts(contacts) {
 
     table.appendChild(row);
   });
+}
+
+function searchContacts() {
+    apiSearchContacts(renderContacts);
 }
 
 function setEditorDisabled(state) {
@@ -89,16 +80,16 @@ function saveContact() {
     }
 
     if(contact.id == null) { // create
-        sendAddContact(contact, searchContacts);
+        apiAddContact(contact, searchContacts);
     } else {
-        sendEditContact(contact, searchContacts);
+        apiEditContact(contact, searchContacts);
     }
     save_lock = false;
 }
 
 function deleteContact() {
     let contact = readEditor();
-    sendDeleteContact(contact.id);
+    apiDeleteContact(contact.id, searchContacts);
     populateEditor({
         firstName: "",
         lastName: "",
@@ -108,3 +99,13 @@ function deleteContact() {
     })
     setEditorDisabled(true);
 }
+
+window.onload = function () {
+    const userId = getUserId();
+    if (!userId) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    searchContacts()
+};

@@ -4,7 +4,7 @@ function getUserId() {
     return localStorage.getItem("userId");
 }
 
-function searchContacts() {
+function apiSearchContacts(success_callback) {
     const search = document.getElementById("searchText").value;
     const userId = getUserId();
 
@@ -20,14 +20,14 @@ function searchContacts() {
     xhr.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             const res = JSON.parse(xhr.responseText);
-            renderContacts(res.results);
+            success_callback(res.results);
         }
     };
 
     xhr.send(payload);
 }
 
-function sendAddContact(contact, success_callback) {
+function apiAddContact(contact, success_callback) {
     const payload = JSON.stringify({
         firstName: contact.firstName,
         lastName: contact.lastName,
@@ -49,7 +49,7 @@ function sendAddContact(contact, success_callback) {
     xhr.send(payload);
 }
 
-function sendEditContact(contact, success_callback) {
+function apiEditContact(contact, success_callback) {
     const payload = JSON.stringify({
         ...contact,
         userId: getUserId()
@@ -68,7 +68,7 @@ function sendEditContact(contact, success_callback) {
     xhr.send(payload);
 }
 
-function sendDeleteContact(id) {
+function apiDeleteContact(id, success_callback) {
     const payload = JSON.stringify({
         id: id,
         userId: getUserId()
@@ -80,7 +80,7 @@ function sendDeleteContact(id) {
 
     xhr.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            searchContacts();
+            success_callback();
         }
     };
 
