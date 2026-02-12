@@ -86,11 +86,11 @@ function saveContact() {
 
     if(contact.id == null) { // create
         apiAddContact(contact, searchContacts);
+        clearEditor();
+        setEditorDisabled(true);
     } else {
         apiEditContact(contact, searchContacts);
     }
-    clearEditor();
-    setEditorDisabled(true);
     save_lock = false;
 }
 
