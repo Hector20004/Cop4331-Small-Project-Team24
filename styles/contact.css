@@ -188,6 +188,10 @@ input:focus {
   color: #fcee0a;
 }
 
+input:disabled {
+    border-color: #777777;
+}
+
 /* Table */
 table {
   width: 100%;

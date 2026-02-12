@@ -22,6 +22,7 @@
     <div class="searchbar" style="margin-bottom: 10px">
       <input id="searchText" placeholder="SCAN CONTACTS..." />
       <button onclick="searchContacts()">INITIATE SCAN</button>
+        <button onclick="addContact()">+</button>
     </div>
       <div class="contacts-scrollable">
     <!-- TABLE -->
@@ -32,7 +33,6 @@
           <th>LAST NAME</th>
           <th>CALLSIGN</th>
           <th>EMAIL PROTOCOL</th>
-          <th>ACTIONS</th>
         </tr>
       </thead>
       <tbody id="contactsTable"></tbody>
@@ -41,20 +41,24 @@
   </div>
       <div class="card register">
           <header>
-              <h1>REGISTER NEW CONTACT</h1>
+              <h1>EDIT CONTACT</h1>
           </header>
           <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
               <div>
-          <input id="firstName" placeholder="GIVEN NAME" />
-          <input id="lastName" placeholder="SURNAME" />
-          <input id="phone" placeholder="CALLSIGN / PHONE" />
-          <input id="email" placeholder="EMAIL PROTOCOL" />
+          <input id="firstName" placeholder="GIVEN NAME" disabled />
+          <input id="lastName" placeholder="SURNAME" disabled />
+          <input id="phone" placeholder="CALLSIGN / PHONE" disabled />
+          <input id="email" placeholder="EMAIL PROTOCOL" disabled />
               </div>
           </div>
-          <button onclick="addContact()" style="width: 100%">ADD TO NETWORK</button>
+          <div style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+              <button onclick="saveContact()">SAVE</button>
+              <button onclick="deleteContact()">DELETE</button>
+          </div>
       </div>
   </div>
 
+    <script src="js/api.js"></script>
   <script src="js/contacts.js"></script>
 
 </body>
