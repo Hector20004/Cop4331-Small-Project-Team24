@@ -322,3 +322,24 @@ body::after {
     background: transparent;
     transition: all 0.3s ease;
 }
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #ff00c8;
+
+    color: #00fff2; /* neon cyan text */
+    font-size: 16px;
+    letter-spacing: 1px;
+
+    outline: none;
+    transition: 0.3s;
+}
+input:focus {
+    border-bottom: 2px solid #fcee0a;
+    box-shadow: 0 5px 20px rgba(252,238,10,0.4);
+    color: #fcee0a; /* switch text color on focus */
+}
