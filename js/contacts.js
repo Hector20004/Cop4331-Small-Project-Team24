@@ -40,12 +40,21 @@ function setEditorDisabled(state) {
 }
 
 function populateEditor(contact) {
-    setEditorDisabled(false);
     document.getElementById("firstName").value = contact.firstName;
     document.getElementById("lastName").value = contact.lastName;
     document.getElementById("phone").value = contact.phone;
     document.getElementById("email").value = contact.email;
     current_id = contact.id;
+}
+
+function clearEditor() {
+    populateEditor({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        current_id: null
+    })
 }
 
 function readEditor() {
@@ -59,13 +68,8 @@ function readEditor() {
 }
 
 function addContact() {
-    populateEditor({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        current_id: null
-    })
+    clearEditor();
+    setEditorDisabled(false);
 }
 
 function saveContact() {
@@ -84,19 +88,15 @@ function saveContact() {
     } else {
         apiEditContact(contact, searchContacts);
     }
+    clearEditor();
+    setEditorDisabled(true);
     save_lock = false;
 }
 
 function deleteContact() {
     let contact = readEditor();
     apiDeleteContact(contact.id, searchContacts);
-    populateEditor({
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        current_id: null
-    })
+    clearEditor();
     setEditorDisabled(true);
 }
 
