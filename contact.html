@@ -2,36 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Contacts</title>
+  <title>Neural Contact Console</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
 
-  <h1 class="page-title">Contact Manager</h1>
+  <h1 class="page-title">NEURAL CONTACT CONSOLE</h1>
 
   <div class="card">
 
+    <!-- Top Bar -->
     <div class="topbar">
-      <h2 id="welcomeText">Welcome</h2>
-      <button onclick="logout()">Log Out</button>
+      <h2 id="welcomeText">WELCOME, OPERATOR</h2>
+      <button onclick="logout()">TERMINATE SESSION</button>
     </div>
 
     <!-- SEARCH -->
     <div style="margin-bottom: 25px;">
-      <input id="searchText" placeholder="Search contacts" />
-      <button onclick="searchContacts()">Search</button>
+      <input id="searchText" placeholder="SCAN CONTACTS..." />
+      <button onclick="searchContacts()">INITIATE SCAN</button>
     </div>
 
     <!-- TABLE -->
     <table>
       <thead>
         <tr>
-          <th>First</th>
-          <th>Last</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Actions</th>
+          <th>FIRST NAME</th>
+          <th>LAST NAME</th>
+          <th>CALLSIGN</th>
+          <th>EMAIL PROTOCOL</th>
+          <th>ACTIONS</th>
         </tr>
       </thead>
       <tbody id="contactsTable"></tbody>
@@ -40,17 +41,17 @@
     <hr style="margin: 35px 0;">
 
     <!-- ADD CONTACT -->
-    <h3>Add Contact</h3>
-    <input id="firstName" placeholder="First Name" />
-    <input id="lastName" placeholder="Last Name" />
-    <input id="phone" placeholder="Phone" />
-    <input id="email" placeholder="Email" />
-    <button onclick="addContact()">Add</button>
+    <h3>REGISTER NEW CONTACT</h3>
+    <input id="firstName" placeholder="GIVEN NAME" />
+    <input id="lastName" placeholder="SURNAME" />
+    <input id="phone" placeholder="CALLSIGN / PHONE" />
+    <input id="email" placeholder="EMAIL PROTOCOL" />
+    <button onclick="addContact()">ADD TO NETWORK</button>
 
   </div>
 
-  
   <script src="js/contacts.js"></script>
 
 </body>
 </html>
+
