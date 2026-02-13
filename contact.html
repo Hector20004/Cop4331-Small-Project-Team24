@@ -2,55 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Contacts</title>
+  <title>Neural Contact Console</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles/contact.css">
 </head>
 <body>
+<header class="page-title">
+    <h1>NEURAL CONTACT CONSOLE</h1>
+    <button onclick="logout()">DEAUTHENTICATE</button>
+</header>
 
-  <h1 class="page-title">Contact Manager</h1>
-
+  <div class="card-container">
   <div class="card">
-
-    <div class="topbar">
-      <h2 id="welcomeText">Welcome</h2>
-      <button onclick="logout()">Log Out</button>
-    </div>
+      <header>
+          <h1>CONTACT LIST</h1>
+      </header>
 
     <!-- SEARCH -->
-    <div style="margin-bottom: 25px;">
-      <input id="searchText" placeholder="Search contacts" />
-      <button onclick="searchContacts()">Search</button>
+    <div class="searchbar" style="margin-bottom: 10px">
+      <input id="searchText" placeholder="SCAN CONTACTS..." />
+      <button onclick="searchContacts()">INITIATE SCAN</button>
+        <button onclick="addContact()">+</button>
     </div>
-
+      <div class="contacts-scrollable">
     <!-- TABLE -->
     <table>
       <thead>
         <tr>
-          <th>First</th>
-          <th>Last</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Actions</th>
+          <th>FIRST NAME</th>
+          <th>LAST NAME</th>
+          <th>CALLSIGN</th>
+          <th>EMAIL PROTOCOL</th>
         </tr>
       </thead>
       <tbody id="contactsTable"></tbody>
     </table>
-
-    <hr style="margin: 35px 0;">
-
-    <!-- ADD CONTACT -->
-    <h3>Add Contact</h3>
-    <input id="firstName" placeholder="First Name" />
-    <input id="lastName" placeholder="Last Name" />
-    <input id="phone" placeholder="Phone" />
-    <input id="email" placeholder="Email" />
-    <button onclick="addContact()">Add</button>
-
+      </div>
+  </div>
+      <div class="card register">
+          <header>
+              <h1>EDIT CONTACT</h1>
+          </header>
+          <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
+              <div>
+          <input id="firstName" placeholder="GIVEN NAME" disabled />
+          <input id="lastName" placeholder="SURNAME" disabled />
+          <input id="phone" placeholder="CALLSIGN / PHONE" disabled />
+          <input id="email" placeholder="EMAIL PROTOCOL" disabled />
+              </div>
+          </div>
+          <div style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+              <button onclick="saveContact()">SAVE</button>
+              <button onclick="deleteContact()">DELETE</button>
+          </div>
+      </div>
   </div>
 
-  
+    <script src="js/api.js"></script>
   <script src="js/contacts.js"></script>
 
 </body>
 </html>
+

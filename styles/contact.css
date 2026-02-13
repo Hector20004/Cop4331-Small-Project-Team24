@@ -1,31 +1,116 @@
-/* styles/contact.css */
+/* Cyberpunk Contact Page */
 
 * {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Rajdhani", sans-serif;
 }
 
+/* Body */
 body {
   margin: 0;
-  background: #eef2f7;
-  color: #0f172a;
+  background: linear-gradient(135deg, #050510, #0a0f2a, #120018);
+  color: #00fff2;
+  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Page title */
 .page-title {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
   text-align: center;
-  font-size: 36px;
-  font-weight: 700;
-  margin: 30px 0 10px;
+  margin: 20px;
+}
+
+.page-title h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fcee0a;
+    text-shadow: 0 0 10px #fcee0a, 0 0 20px rgba(252,238,10,0.4);
+}
+
+.card-container {
+    flex: 1;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    height: max-content;
+    gap: 20px;
 }
 
 /* Main card */
 .card {
-  max-width: 1100px;
-  margin: 0 auto 60px;
-  background: #bcbcbc;
-  padding: 30px 40px 40px;
-  border-radius: 10px;
+    width: 100%;
+    height: auto;
+  background: rgba(0,0,0,0.75);
+  padding: 15px 40px 40px;
+  border-radius: 12px;
+  border: 2px solid #00fff2;
+  box-shadow:
+    0 0 10px #00fff2,
+    0 0 30px rgba(0,255,255,0.4);
+  backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card header {
+    display: inline-flex;
+    height: 30px;
+    position: relative;
+    top: -30px;
+    background: black;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #fcee0a;
+    box-shadow:
+            0 0 10px #fcee0a,
+            0 0 30px rgba(252,238,10,0.4);
+    color: #fcee0a;
+    align-items: center;
+    justify-content: center;
+}
+
+.card header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+
+.card.register {
+    width: 40%;
+}
+
+@media (max-width: 1024px) {
+    .card-container {
+        flex-direction: column;
+    }
+    .card.register {
+        width: 100%;
+    }
+}
+
+.searchbar {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+.searchbar input {
+    width: 100%;
+}
+
+.contacts-scrollable {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    border: 1px solid rgba(215, 22, 173, 0.7);
+    box-shadow: 0 0 10px rgba(215, 22, 173, 0.3);
 }
 
 /* Top bar */
@@ -39,51 +124,108 @@ body {
 #welcomeText {
   font-size: 24px;
   font-weight: 700;
+  color: #fcee0a;
+  text-shadow: 0 0 5px #fcee0a;
 }
 
+/* Buttons */
 button {
-  background: #2563eb;
-  color: white;
-  border: none;
+    height: 40px;
+  background: transparent;
+  color: #fcee0a;
+  border: 2px solid #fcee0a;
   border-radius: 999px;
   padding: 10px 26px;
   font-size: 16px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+    width: fit-content;
+    text-wrap: nowrap;
 }
 
 button:hover {
-  background: #1d4ed8;
+  background: #fcee0a;
+  color: #000;
+  box-shadow:
+    0 0 10px #fcee0a,
+    0 0 30px #fcee0a,
+    0 0 60px #fcee0a;
 }
 
+/* Inputs */
 input {
-  width: 100%;
-  max-width: 300px;
-  padding: 12px 16px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  border-radius: 999px;
-  border: 1px solid #cbd5e1;
-  font-size: 16px;
+    height: 40px;
+    width: 100%;
+    padding: 12px 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 999px;
+    border: 2px solid #00fff2; /* cyan border */
+    background: transparent;
+    color: #00fff2; /* neon cyan text */
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(0,255,255,0.7);
 }
 
+/* Placeholder text */
+input::placeholder {
+    color: rgba(0,255,255,0.5); /* soft neon cyan */
+    letter-spacing: 1.5px;
+    font-style: italic;
+}
+
+input:focus::placeholder {
+    color: rgba(252,238,10,0.5); /* yellow glow on focus */
+}
+
+input:focus {
+  border-color: #fcee0a;
+  box-shadow: 0 5px 20px rgba(252,238,10,0.4);
+  color: #fcee0a;
+}
+
+input:disabled {
+    border-color: #777777;
+}
+
+/* Table */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  border-radius: 8px;
   overflow: hidden;
+}
+
+tr {
+    border: 1px solid #ff00c8;
 }
 
 th, td {
   padding: 12px 14px;
   text-align: left;
+  color: #00fff2;
 }
 
 th {
-  background: #e5e7eb;
   font-weight: 700;
+  text-shadow: 0 0 3px rgba(255,0,200,0.7);
 }
 
 tr:nth-child(even) {
-  background: #f8fafc;
+  background: rgba(255,255,255,0.05);
+}
+
+tr:hover {
+  background: rgba(252,238,10,0.15);
+  cursor: pointer;
+}
+
+/* Section titles */
+h3 {
+  color: #fcee0a;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #fcee0a;
 }
