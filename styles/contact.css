@@ -104,6 +104,13 @@ body {
     }
 }
 
+@media (prefers-reduced-transparency: reduce) {
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+}
+
 .searchbar {
     display: flex;
     flex-direction: row;
