@@ -94,6 +94,16 @@ body {
     }
 }
 
+@media (prefers-contrast: more) {
+    * {
+        border-color: white !important;
+        background-color: black !important;
+        color: white !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+}
+
 .searchbar {
     display: flex;
     flex-direction: row;
