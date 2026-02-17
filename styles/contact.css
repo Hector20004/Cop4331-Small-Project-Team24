@@ -88,9 +88,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-.contact.info {
-  position: fixed;   
-}
 .card header h1 {
     margin: 0;
     padding: 0;
@@ -329,4 +326,7 @@ h3 {
 /* error border for invalid inputs */
 input.error {
   border-color: #ff0055 !important;
+}
+.card-register{
+    position: fixed;
 }
