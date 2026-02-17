@@ -41,6 +41,16 @@ function readEditor() {
     }
 }
 
+// Format phone number
+function formatPhoneDisplay(phone) {
+  if (!phone) return "";
+  // format as (123) 456-7890
+  if (phone.length === 10) {
+    return `(${phone.slice(0, 3)}) ${phone.slice(3, 6)}-${phone.slice(6)}`;
+  }
+  return phone;
+}
+
 // Format date for display
 function formatDate(dateString) {
   if (!dateString) return "N/A";
@@ -72,7 +82,7 @@ function renderContacts(contacts) {
         row.innerHTML = `
       <td>${c.firstName}</td>
       <td>${c.lastName}</td>
-      <td>${c.phone}</td>
+      <td>${formatPhoneDisplay(c.phone)}</td>
       <td>${c.email}</td>
       <td>${formatDate(c.dateCreated)}</td>
     `;
