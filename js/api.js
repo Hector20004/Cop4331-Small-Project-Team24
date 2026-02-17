@@ -1,4 +1,4 @@
-const urlBase = "https://24.projectucf.software";
+const urlBase = "https://24.projectucf.software/API";
 
 function getUserId() {
     return localStorage.getItem("userId");
