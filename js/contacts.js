@@ -106,6 +106,7 @@ function saveContact() {
         document.getElementById("contactResult").innerHTML = "Please enter phone number as 10 digits: 1234567890";
         save_lock = false;
         return;
+      }
     }
     // clear previous error messages
     document.getElementById("contactResult").innerHTML = "";
