@@ -246,3 +246,11 @@ h3 {
   margin-bottom: 10px;
   text-shadow: 0 0 5px #fcee0a;
 }
+
+/* Error messages */
+#contactResult {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ff0055;
+}
