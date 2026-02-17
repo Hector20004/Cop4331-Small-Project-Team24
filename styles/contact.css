@@ -327,6 +327,6 @@ h3 {
 input.error {
   border-color: #ff0055 !important;
 }
-/* .card-register{
+.register{
     position: sticky;
-} */
+}
