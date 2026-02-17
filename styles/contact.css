@@ -328,5 +328,5 @@ input.error {
   border-color: #ff0055 !important;
 }
 .card-register{
-    position: fixed;
+    position: sticky;
 }
