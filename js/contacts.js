@@ -18,7 +18,7 @@ function populateEditor(contact) {
     document.getElementById("lastName").value = contact.lastName;
     document.getElementById("phone").value = contact.phone;
     document.getElementById("email").value = contact.email;
-    document.getElementById("creationTime").value = contact.dateCreated ? "Date Created: " + contact.dateCreated : "";
+    document.getElementById("creationTime").innerText = contact.dateCreated ? "Date Created: " + contact.dateCreated : "";
     current_id = contact.id;
     if (contact.id == null) {
         document.getElementById("editHeader").innerText = "NEW CONTACT";
