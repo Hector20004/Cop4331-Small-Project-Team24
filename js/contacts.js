@@ -18,6 +18,7 @@ function populateEditor(contact) {
     document.getElementById("lastName").value = contact.lastName;
     document.getElementById("phone").value = contact.phone;
     document.getElementById("email").value = contact.email;
+    document.getElementById("creationTime").value = contact.dateCreated ? "Date Created: " + contact.dateCreated : "";
     current_id = contact.id;
     if (contact.id == null) {
         document.getElementById("editHeader").innerText = "NEW CONTACT";
@@ -118,7 +119,7 @@ function saveContact() {
     }
 
     if (contact.phone.length > 0) {
-      if (contact.phone.length !== 10) {
+      if (contact.phone.match(/^[0-9+\-()]$/)) {
         document.getElementById("contactResult").innerHTML = "* Please enter phone number as 10 digits: 1234567890";
         save_lock = false;
         return;
@@ -161,12 +162,11 @@ function updateIcon() {
 window.onload = function () {
     const userId = getUserId();
     if (!userId) {
-        window.location.href = "login.html";
-        return;
+        //window.location.href = "login.html";
+        //return;
     }
 
     searchContacts()
     clearEditor()
     setEditorDisabled(false);
-    console.log("hi")
 };
