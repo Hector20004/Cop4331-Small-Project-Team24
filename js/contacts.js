@@ -105,6 +105,8 @@ function searchContacts() {
 function addContact() {
     clearEditor();
     setEditorDisabled(false);
+
+    //document.getElementById("phone").style.boarderColor = "#00fff2";
 }
 
 function saveContact() {
@@ -113,20 +115,48 @@ function saveContact() {
     }
     save_lock = true;
     let contact = readEditor();
+
     if(firstName.length === 0 && lastName.length === 0) {
         save_lock = false;
         return;
     }
 
+    // clear previous error messages
+    document.getElementById("contactResult").innerHTML = "";
+    // phone
+    document.getElementById("phone").classList.remove("error"); //reset to gray
+    const phoneLabel = document.getElementById("phoneLabel");
+    phoneLabel.innerHTML = "";
+    phoneLabel.style.display = "none";
+    // email
+    document.getElementById("email").classList.remove("error");
+    const emailLabel = document.getElementById("emailLabel");
+    emailLabel.innerHTML = "";
+    emailLabel.style.display = "none";
+
     if (contact.phone.length > 0) {
       if (contact.phone.match(/^[0-9+\-()]$/)) {
         document.getElementById("contactResult").innerHTML = "* Please enter phone number as 10 digits: 1234567890";
+	document.getElementById("phone").classList.add("error"); //red boarder
+	//document.getElementById("phoneLabel").innerHTML = "Phone *"; // label
+	const phoneLabel = document.getElementById("phoneLabel");
+	phoneLabel.innerHTML = "Phone *";
+	phoneLabel.style.display = "inline";
         save_lock = false;
         return;
       }
     }
-    // clear previous error messages
-    document.getElementById("contactResult").innerHTML = "";
+    if (contact.email.length > 0) {
+      if (!contact.email.includes("@")) {
+	document.getElementById("contactResult").innerHTML = "* Please enter a valid email address";
+	document.getElementById("email").classList.add("error");
+	const emailLabel = document.getElementById("emailLabel");
+	emailLabel.innerHTML = "Email *";
+	emailLabel.style.display = "inline";
+	save_lock = false;
+	return;
+      }
+    }
 
     if(contact.id == null) { // create
         apiAddContact(contact, searchContacts);
@@ -143,7 +173,21 @@ function deleteContact() {
     apiDeleteContact(contact.id, searchContacts);
     clearEditor();
     setEditorDisabled(true);
+
+    //clear error styling
+    document.getElementById("contactResult").innerHTML = "";
+    // clear phone error
+    document.getElementById("phone").classList.remove("error");
+    const PhoneLabel = document.getElementById("phoneLabel");
+    phoneLabel.innerHTML = "";
+    phoneLabel.style.display = "none";
+    // clear email error
+    document.getElementById("email").classList.remove("error");
+    const emailLabel = document.getElementById("emailLabel");
+    emailLabel.innerHTML = "";
+    emailLabel.style.display = "none";
 }
+
 
 function updateIcon() {
     let contact = readEditor();
