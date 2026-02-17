@@ -101,6 +101,13 @@ function saveContact() {
         return;
     }
 
+    if (contact.phone.length > 0) {
+      if (contact.phone.length !== 10) {
+        alert("Please enter phone number as 10 digits");
+        save_lock = false;
+        return;
+    }
+
     if(contact.id == null) { // create
         apiAddContact(contact, searchContacts);
         clearEditor();
