@@ -186,7 +186,7 @@ body {
 }
 
 .contacts-scrollable {
-    height: 100%;
+    height: 70vh; 
     width: 100%;
     overflow-y: scroll;
     border: 1px solid rgba(215, 22, 173, 0.7);
@@ -326,7 +326,4 @@ h3 {
 /* error border for invalid inputs */
 input.error {
   border-color: #ff0055 !important;
-}
-.register{
-    position: sticky;
 }
