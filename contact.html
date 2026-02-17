@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Neural Contact Console</title>
+  <title>Contact Console</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles/contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <header class="page-title">
-    <h1>NEURAL CONTACT CONSOLE</h1>
+    <h1>CONTACT CONSOLE</h1>
     <button onclick="logout()">DEAUTHENTICATE</button>
 </header>
 
   <div class="card-container">
-  <div class="card">
+  <div class="card contacts">
       <header>
           <h1>CONTACT LIST</h1>
       </header>
@@ -21,7 +22,7 @@
     <!-- SEARCH -->
     <div class="searchbar" style="margin-bottom: 10px">
       <input id="searchText" placeholder="SCAN CONTACTS..." />
-      <button onclick="searchContacts()">INITIATE SCAN</button>
+      <button onclick="searchContacts()">SCAN</button>
         <button onclick="addContact()">+</button>
     </div>
       <div class="contacts-scrollable">
@@ -31,9 +32,6 @@
         <tr>
           <th>FIRST NAME</th>
           <th>LAST NAME</th>
-          <th>CALLSIGN</th>
-          <th>EMAIL PROTOCOL</th>
-          <th>DATE CREATED</th>
         </tr>
       </thead>
       <tbody id="contactsTable"></tbody>
@@ -42,12 +40,16 @@
   </div>
       <div class="card register">
           <header>
-              <h1>EDIT CONTACT</h1>
+              <h1 id="editHeader">EDIT CONTACT</h1>
           </header>
-          <div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1;">
-              <div>
-          <input id="firstName" placeholder="GIVEN NAME" disabled />
-          <input id="lastName" placeholder="SURNAME" disabled />
+          <div class="editor-content">
+              <div class="editor-vgroup">
+                  <div id="editor-icon">
+                  </div>
+                  <div class="editor-group">
+          <input id="firstName" placeholder="GIVEN NAME" onchange="updateIcon()" disabled />
+          <input id="lastName" placeholder="SURNAME" onchange="updateIcon()" disabled />
+                  </div>
           <input id="phone" placeholder="CALLSIGN / PHONE" disabled />
           <input id="email" placeholder="EMAIL PROTOCOL" disabled />
               </div>

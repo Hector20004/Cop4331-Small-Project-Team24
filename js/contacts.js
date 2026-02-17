@@ -19,6 +19,11 @@ function populateEditor(contact) {
     document.getElementById("phone").value = contact.phone;
     document.getElementById("email").value = contact.email;
     current_id = contact.id;
+    if (contact.id == null) {
+        document.getElementById("editHeader").innerText = "NEW CONTACT";
+    } else {
+        document.getElementById("editHeader").innerText = "EDIT CONTACT";
+    }
 }
 
 function clearEditor() {
@@ -79,13 +84,13 @@ function renderContacts(contacts) {
             setEditorDisabled(false)
         }
 
-        row.innerHTML = `
-      <td>${c.firstName}</td>
-      <td>${c.lastName}</td>
-      <td>${formatPhoneDisplay(c.phone)}</td>
-      <td>${c.email}</td>
-      <td>${formatDate(c.dateCreated)}</td>
-    `;
+        let cells = [c.firstName, c.lastName];
+
+        for(const c of cells) {
+            const cell = document.createElement("td");
+            cell.innerText = c;
+            row.appendChild(cell);
+        }
 
         table.appendChild(row);
     });
@@ -138,12 +143,29 @@ function deleteContact() {
     setEditorDisabled(true);
 }
 
+function updateIcon() {
+    let contact = readEditor();
+    let container = document.getElementById("editor-icon")
+    container.innerText =
+        (contact.firstName ? contact.firstName[0] : "") +
+        (contact.lastName ? contact.lastName[0] : "");
+
+    if(container.innerText.length === 0) {
+        container.classList.remove("populated");
+    } else {
+        container.classList.add("populated");
+    }
+}
+
 window.onload = function () {
     const userId = getUserId();
     if (!userId) {
-        window.location.href = "login.html";
-        return;
+        //window.location.href = "login.html";
+        //return;
     }
 
     searchContacts()
+    clearEditor()
+    setEditorDisabled(false);
+    console.log("hi")
 };
