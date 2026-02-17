@@ -42,7 +42,7 @@ function readEditor() {
 }
 
 // Format date for display
-function formateDate(dateString) {
+function formatDate(dateString) {
   if (!dateString) return "N/A";
   const date = new Date(dateString);
   return "Created " + date.toLocaleString('en-US', {
@@ -73,6 +73,7 @@ function renderContacts(contacts) {
       <td>${c.lastName}</td>
       <td>${c.phone}</td>
       <td>${c.email}</td>
+      <td>${formatDate(c.dateCreated)}</td>
     `;
 
         table.appendChild(row);
