@@ -88,7 +88,9 @@ body {
     align-items: center;
     justify-content: center;
 }
-
+.contact.info {
+  position: fixed;   
+}
 .card header h1 {
     margin: 0;
     padding: 0;
