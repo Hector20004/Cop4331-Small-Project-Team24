@@ -39,18 +39,18 @@
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
-		echo $obj;
+		echo json_encode($obj);
 	}
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = array("id" => 0, "firstName" => "", "lastName" => "", "message" => "", "error" => $err);
 		sendResultInfoAsJson( $retValue );
 	}
 
 	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = array("id" => $id, "firstName" => $firstName, "lastName" => $lastName, "message" => "Login successful", "error" => "");
 		sendResultInfoAsJson( $retValue );
 	}
 

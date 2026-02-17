@@ -21,7 +21,7 @@
 
 		if($stmt->affected_rows > 0)
 		{
-			returnWithError("");
+			returnWithSuccess("Contact updated successfully");
 		}
 		else
 		{
@@ -40,12 +40,18 @@
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
-		echo $obj;
+		echo json_encode($obj);
 	}
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = array("message" => "", "error" => $err);
+		sendResultInfoAsJson( $retValue );
+	}
+
+	function returnWithSuccess( $msg )
+	{
+		$retValue = array("message" => $msg, "error" => "");
 		sendResultInfoAsJson( $retValue );
 	}
 
