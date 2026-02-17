@@ -50,8 +50,17 @@
           <input id="firstName" placeholder="GIVEN NAME" onchange="updateIcon()" disabled />
           <input id="lastName" placeholder="SURNAME" onchange="updateIcon()" disabled />
                   </div>
-          <input id="phone" placeholder="CALLSIGN / PHONE" disabled />
-          <input id="email" placeholder="EMAIL PROTOCOL" disabled />
+	   <!-- phone errors -->
+	  <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+		  <span id="phoneLabel" style="color: #ff0055; font-weight: bold; white-space: nowrap; display: none;"></span>
+          	  <input id="phone" placeholder="CALLSIGN / PHONE" disabled style="flex: 1;" />
+	  </div> 
+	   <!-- email errors -->
+	  <div style="display: flex; align-items: center; gap: 10px; width: 100%;"> 
+	  	  <span id="emailLabel" style="color: #ff0055; font-weight: bold; white-space: nowrap; display: none;"></span>
+	 	  <input id="email" placeholder="EMAIL PROTOCOL" disabled style="flex: 1;"  />
+	  </div>
+          	 <!-- <input id="email" placeholder="EMAIL PROTOCOL" disabled /> --> 
               </div>
           </div>
           <span id="contactResult"></span>
