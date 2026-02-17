@@ -45,7 +45,7 @@ function readEditor() {
 function formatDate(dateString) {
   if (!dateString) return "N/A";
   const date = new Date(dateString);
-  return "Created " + date.toLocaleString('en-US', {
+  return date.toLocaleString('en-US', {
     year: 'numeric',
     month: 'numeric',
     day: 'numeric',
