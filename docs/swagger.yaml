@@ -1,0 +1,238 @@
+swagger: '2.0'
+info:
+  description: This is the API documentation for the COP 4331 Team 24 Contact APP
+  version: 1.0.0
+  title: Neural Contacts APP
+  # put the contact info for your development or API team
+  contact:
+    email: hg482414@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /Login.php:
+    post:
+      tags:
+      - Users
+      summary: Logs in to the contact app
+      operationId: dlLogin
+      description: Logs in to contact app
+      consumes:
+      - applicatoin/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: loginItem
+        description: Login
+        schema:
+          $ref: '#/definitions/LoginRequest'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found
+        500:
+          description: Server Error
+  /Register.php:
+    post:
+      tags:
+      - Users
+      summary: Registers a user
+      operationId: dlRegister
+      description: Registers a new user to the users database
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: registerItem
+        description: contact
+        schema:
+          $ref: '#/definitions/RegisterRequest'
+      responses:
+        200:
+          description: OK
+        404:
+          description: URL Not Found 
+        500:
+          description: Server Error
+  /AddContact.php:
+    post:
+      summary: Add a new contact
+      tags:
+        - Contacts
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/AddContactRequest'
+      responses:
+        200:
+          description: Contact added
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+
+  /SearchContacts.php:
+    post:
+      summary: Search contacts for a user
+      tags:
+        - Contacts
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/SearchRequest'
+      responses:
+        200:
+          description: Search results
+          schema:
+            $ref: '#/definitions/SearchResponse'
+
+  /EditContact.php:
+    post:
+      summary: Edit an existing contact
+      tags:
+        - Contacts
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/EditContactRequest'
+      responses:
+        200:
+          description: Edit result
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+
+  /DeleteContact.php:
+    post:
+      summary: Delete a contact
+      tags:
+        - Contacts
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/DeleteContactRequest'
+      responses:
+        200:
+          description: Delete result
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  Login:
+    type: object
+    required:
+    - login
+    - password
+    properties:
+      login:
+        type: string
+        example: "fred"
+      password:
+        type: string
+        example: "secret"
+  RegisterRequest:
+    type: object
+    required:
+      - givenname
+      - surname
+    allOf:
+    - $ref: '#/definitions/Login'
+    - type: object
+      properties:
+        givenname:
+          type: string
+          example: "Rick"
+        surname:
+          type: string
+          example: "Leinecker"
+  LoginRequest:
+    type: object
+    allOf:
+      - $ref: '#/definitions/Login'
+
+  AddContactRequest:
+    type: object
+    allOf:
+      - $ref: '#/definitions/Contact'
+  SearchRequest:
+    type: object
+    required:
+      - search
+      - userId
+    properties:
+      search:
+        type: string
+      userId:
+        type: integer
+  EditContactRequest:
+    type: object
+    allOf:
+      - $ref: "#/definitions/Contact"
+  DeleteContactRequest:
+    type: object
+    required:
+      - id
+      - userId
+    properties:
+      id:
+        type: integer
+      userId:
+        type: integer
+
+  Contact:
+    type: object
+    properties:
+      id:
+        type: integer
+      firstName:
+        type: string
+      lastName:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      dateCreated:
+        type: string
+  SearchResponse:
+    type: object
+    properties:
+      results:
+        type: array
+        items:
+          $ref: '#/definitions/Contact'
+      error:
+        type: string
+  ErrorResponse:
+    type: object
+    properties:
+      error:
+        type: string
+host: 24.projectucf.software
+basePath: /API
+schemes:
+- http
