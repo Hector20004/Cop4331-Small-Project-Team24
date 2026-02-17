@@ -41,6 +41,21 @@ function readEditor() {
     }
 }
 
+// Format date for display
+function formateDate(dateString) {
+  if (!dateString) return "N/A";
+  const date = new Date(dateString);
+  return "Created " + date.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true
+  });
+}
+
 function renderContacts(contacts) {
     const table = document.getElementById("contactsTable");
     table.innerHTML = "";
