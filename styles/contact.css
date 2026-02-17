@@ -325,3 +325,8 @@ h3 {
   color: #ff0055 !important;
   font-weight: bold;
 }
+
+/* error border for invalid inputs */
+input.error {
+  border-color: #ff0055 !important;
+}
