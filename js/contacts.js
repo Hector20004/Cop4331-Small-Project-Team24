@@ -103,7 +103,7 @@ function saveContact() {
 
     if (contact.phone.length > 0) {
       if (contact.phone.length !== 10) {
-        document.getElementById("contactResult").innerHTML = "Please enter phone number as 10 digits: 1234567890";
+        document.getElementById("contactResult").innerHTML = "* Please enter phone number as 10 digits: 1234567890";
         save_lock = false;
         return;
       }
