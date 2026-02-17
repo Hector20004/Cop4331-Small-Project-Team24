@@ -1,5 +1,5 @@
-const loginUrl = window.location.origin + "/Login.php";
-const signupUrl = window.location.origin + "/Register.php";
+const loginUrl = window.location.origin + "/API/Login.php";
+const signupUrl = window.location.origin + "/API/Register.php";
 
 let userId = 0;
 let firstName = "";
