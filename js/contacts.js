@@ -24,6 +24,7 @@ function populateEditor(contact) {
     } else {
         document.getElementById("editHeader").innerText = "EDIT CONTACT";
     }
+    updateIcon()
 }
 
 function clearEditor() {
@@ -160,8 +161,8 @@ function updateIcon() {
 window.onload = function () {
     const userId = getUserId();
     if (!userId) {
-        //window.location.href = "login.html";
-        //return;
+        window.location.href = "login.html";
+        return;
     }
 
     searchContacts()
