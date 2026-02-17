@@ -2,9 +2,6 @@
 
 	$inData = getRequestInfo();
 
-	$searchResults = "";
-	$searchCount = 0;
-
 	$conn = new mysqli("localhost", "team24", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error)
 	{
@@ -19,23 +16,26 @@
 
 		$result = $stmt->get_result();
 
+		$results = array();
 		while($row = $result->fetch_assoc())
 		{
-			if( $searchCount > 0 )
-			{
-				$searchResults .= ",";
-			}
-			$searchCount++;
-			$searchResults .= '{"id":' . $row["ID"] . ',"firstName":"' . $row["FirstName"] . '","lastName":"' . $row["LastName"] . '","phone":"' . $row["Phone"] . '","email":"' . $row["Email"] . '","dateCreated":"' . $row["DateCreated"] . '"}';
+			$results[] = array(
+				"id" => $row["ID"],
+				"firstName" => $row["FirstName"],
+				"lastName" => $row["LastName"],
+				"phone" => $row["Phone"],
+				"email" => $row["Email"],
+				"dateCreated" => $row["DateCreated"]
+			);
 		}
 
-		if( $searchCount == 0 )
+		if( count($results) == 0 )
 		{
 			returnWithError( "No Records Found" );
 		}
 		else
 		{
-			returnWithInfo( $searchResults );
+			returnWithInfo( $results );
 		}
 
 		$stmt->close();
@@ -50,18 +50,18 @@
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
-		echo $obj;
+		echo json_encode($obj);
 	}
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"results":[],"error":"' . $err . '"}';
+		$retValue = array("results" => array(), "message" => "", "error" => $err);
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $searchResults )
+	function returnWithInfo( $results )
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		$retValue = array("results" => $results, "message" => "Contacts retrieved successfully", "error" => "");
 		sendResultInfoAsJson( $retValue );
 	}
 

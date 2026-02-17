@@ -19,7 +19,7 @@
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();
-		returnWithError("");
+		returnWithSuccess("Contact added successfully");
 	}
 
 	function getRequestInfo()
@@ -30,12 +30,18 @@
 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
-		echo $obj;
+		echo json_encode($obj);
 	}
 
 	function returnWithError( $err )
 	{
-		$retValue = '{"error":"' . $err . '"}';
+		$retValue = array("message" => "", "error" => $err);
+		sendResultInfoAsJson( $retValue );
+	}
+
+	function returnWithSuccess( $msg )
+	{
+		$retValue = array("message" => $msg, "error" => "");
 		sendResultInfoAsJson( $retValue );
 	}
 
