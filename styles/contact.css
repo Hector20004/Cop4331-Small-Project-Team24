@@ -194,7 +194,8 @@ body {
 }
 
 .contacts-scrollable {
-    height: 52vh; 
+    min-height: 250px;
+    height: calc(90vh - 250px);
     width: 100%;
     overflow-y: scroll;
     border: 1px solid rgba(215, 22, 173, 0.7);
