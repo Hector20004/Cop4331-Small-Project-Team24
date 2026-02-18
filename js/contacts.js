@@ -206,8 +206,8 @@ function updateIcon() {
 window.onload = function () {
     const userId = getUserId();
     if (!userId) {
-        //window.location.href = "login.html";
-        //return;
+        window.location.href = "login.html";
+        return;
     }
 
     searchContacts()
